@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="100%" height="100%" fill="#0a1226"/>
+  <rect x="12" y="12" width="776" height="576" fill="none" stroke="#00f0ff" stroke-width="2" stroke-dasharray="6,6" rx="16"/>
+  <circle cx="400" cy="275" r="35" fill="#05203c" stroke="#00f0ff" stroke-width="2"/>
+  <path d="M385 275 h30 M400 260 v30" stroke="#00f0ff" stroke-width="3" stroke-linecap="round"/>
+  <text x="50%" y="330" fill="#00f0ff" font-family="'Orbitron', sans-serif" font-weight="700" font-size="18" text-anchor="middle">PROJECT DESIGN 7</text>
+  <text x="50%" y="355" fill="#8b949e" font-family="'Inter', sans-serif" font-size="13" text-anchor="middle">Drop your design into images/project7.jpg</text>
+</svg>

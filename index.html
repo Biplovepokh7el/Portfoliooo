@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biplove Pokhrel | Computer Engineering Portfolio 2026</title>
+  <meta name="description" content="Portfolio of Biplove Pokhrel - Computer Engineering Student and Web Developer." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Dynamic Cyber Background -->
+  <div class="cyber-bg">
+    <div class="grid-overlay"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+  </div>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="top-navbar" id="navbar">
+    <div class="nav-brand" onclick="scrollToSection('home')">
+      <div class="logo-box">BP</div>
+    </div>
+
+    <nav class="nav-pills">
+      <button class="nav-pill" id="pill-about" onclick="scrollToSection('about')">
+        PROFIL
+      </button>
+      <button class="nav-pill" id="pill-projects" onclick="scrollToSection('projects')">
+        PROJECT
+      </button>
+      <button class="nav-pill" id="pill-contact" onclick="scrollToSection('contact')">
+        CONTACT PERSON
+      </button>
+    </nav>
+
+    <div class="nav-controls">
+      <div class="audio-toggle-btn" id="audioToggle" onclick="toggleAudio()" title="Toggle Audio">
+        <div class="equalizer-icon" id="equalizer">
+          <span class="bar bar-1"></span>
+          <span class="bar bar-2"></span>
+          <span class="bar bar-3"></span>
+          <span class="bar bar-4"></span>
+        </div>
+        <span class="audio-label" id="audioLabel">MUSIC OFF</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Scroll Container (4 Full-Screen Snap Slides) -->
+  <main class="scroll-container" id="scrollContainer">
+
+    <!-- ===================================================================
+         SLIDE 1: TITLE SCREEN / GAME MENU (#home)
+         =================================================================== -->
+    <section class="page-section" id="home">
+      <div class="home-top-logo">
+        <div class="logo-box-lg">BP</div>
+      </div>
+
+      <div class="slide-content home-slide-layout">
+        <!-- Left Side: Hero Avatar Box with Crimson Backdrop -->
+        <div class="hero-avatar-wrapper">
+          <div class="crimson-backdrop"></div>
+          <div class="avatar-card">
+            <img src="images/avatar.jpg" alt="Biplove Pokhrel Avatar" class="hero-avatar-img" />
+          </div>
+        </div>
+
+        <!-- Right Side: Title & Game Menu -->
+        <div class="hero-text-menu">
+          <h1 class="main-title">PORTFOLIO <span class="year-glow">2026</span></h1>
+          
+          <div class="title-subtitle">
+            <span class="badge-square">■</span> COMPUTER ENGINEERING STUDENT
+          </div>
+
+          <div class="game-menu">
+            <button class="menu-item-btn start-btn" onclick="scrollToSection('about'); startMusicEngine();">
+              START
+            </button>
+            <button class="menu-item-btn" onclick="openModal('optionsModal')">
+              OPTIONS
+            </button>
+            <button class="menu-item-btn" onclick="scrollToSection('about')">
+              EXIT
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SLIDE 2: PROFIL / ABOUT ME (#about)
+         =================================================================== -->
+    <section class="page-section" id="about">
+      <div class="slide-content profile-slide-layout">
+        
+        <!-- Left Column: Hello & Avatar Spotlight -->
+        <div class="profile-left">
+          <div class="greeting-sub">HELLO, I AM</div>
+          <h2 class="name-header">BIPLOVE POKHREL</h2>
+
+          <div class="spotlight-avatar-box">
+            <div class="blue-aura-glow"></div>
+            <div class="particle-spark p1"></div>
+            <div class="particle-spark p2"></div>
+            <img src="images/avatar.jpg" alt="Biplove Pokhrel Profile" class="spotlight-img" />
+          </div>
+        </div>
+
+        <!-- Right Column: Details & Software Skills -->
+        <div class="profile-right">
+          <!-- About Me Card -->
+          <div class="card-box about-box">
+            <h3 class="box-title">ABOUT ME</h3>
+            <p class="about-desc">
+              HI, I'M BIPLOVE POKHREL. I'M A PASSIONATE <strong>COMPUTER ENGINEERING STUDENT</strong> AND <strong>WEB DEVELOPER</strong>. 
+              I HAVE A STRONG FOUNDATION IN GRAPHIC DESIGN, VIDEO EDITING, TYPOGRAPHY, FULL-STACK WEB APPLICATION DEVELOPMENT, AND SOFTWARE ENGINEERING. 
+              I AM AUTODIDACTIC AND CONSTANTLY EVOLVING MY TECHNICAL AND DESIGN SKILLS YEAR AFTER YEAR.
+            </p>
+          </div>
+
+          <!-- Software Skills Grid (Exact icons matching reference image) -->
+          <div class="card-box skills-box">
+            <h3 class="box-title">SOFTWARE SKILLS</h3>
+            <div class="skills-icons-row">
+              <div class="software-icon pr-icon" title="Premiere Pro">P</div>
+              <div class="software-icon ps-icon" title="Photoshop">Ps</div>
+              <div class="software-icon lr-icon" title="Lightroom">Lr</div>
+              <div class="software-icon capcut-icon" title="CapCut">
+                <i class="fa-solid fa-scissors"></i>
+              </div>
+              <div class="software-icon davinci-icon" title="DaVinci Resolve / Alight Motion">
+                <i class="fa-solid fa-leaf"></i>
+              </div>
+              <div class="software-icon picsart-icon" title="Picsart">P</div>
+              <div class="software-icon vscode-icon" title="VS Code">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <div class="software-icon python-icon" title="Python">
+                <i class="fa-brands fa-python"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education & Experience Grid -->
+          <div class="two-column-info">
+            <div class="info-column">
+              <h4 class="column-title">EDUCATION</h4>
+              <div class="info-detail">
+                <span class="info-year">● 2019 - 2022</span>
+                <p class="info-main">SMAN 2 / High School</p>
+                <span class="info-sub">Natural Science</span>
+              </div>
+              <div class="info-detail" style="margin-top: 10px;">
+                <span class="info-year">● 2022 - PRESENT</span>
+                <p class="info-main">Bachelor in Computer Engineering</p>
+                <span class="info-sub">Software & Embedded Systems</span>
+              </div>
+            </div>
+
+            <div class="info-column">
+              <h4 class="column-title">EXPERIENCE</h4>
+              <div class="info-detail">
+                <span class="info-main">CONTENT & WEB DEVELOPMENT</span>
+                <p class="info-sub">Got Followers 20,000+ (13 JULI - 29 DES)</p>
+                <span class="info-sub">Full Stack Web Apps & Graphic Design</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Languages Bar -->
+          <div class="card-box lang-box">
+            <h3 class="box-title">LANGUAGE [COMMUNICATION]</h3>
+            <div class="lang-row">
+              <div class="lang-label">NEPALI</div>
+              <div class="lang-bar-container"><div class="lang-bar-fill" style="width: 100%;"></div></div>
+              <div class="lang-percent">100%</div>
+            </div>
+            <div class="lang-row">
+              <div class="lang-label">ENGLISH</div>
+              <div class="lang-bar-container"><div class="lang-bar-fill" style="width: 95%;"></div></div>
+              <div class="lang-percent">95%</div>
+            </div>
+            <div class="lang-row">
+              <div class="lang-label">HINDI</div>
+              <div class="lang-bar-container"><div class="lang-bar-fill" style="width: 90%;"></div></div>
+              <div class="lang-percent">90%</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SLIDE 3: RECAP PROJECT 2026 (#projects)
+         =================================================================== -->
+    <section class="page-section" id="projects">
+      <div class="slide-content projects-slide-layout">
+        
+        <div class="projects-title-header">
+          <h2 class="projects-main-title">RECAP PROJECT <span class="year-glow">2026</span></h2>
+          <span class="no-ai-badge">NO AI</span>
+        </div>
+
+        <!-- Multi-Frame Project Gallery Grid matching reference image layout -->
+        <div class="reference-project-grid">
+          
+          <!-- Frame 1 (Left Tall Showcase) -->
+          <div class="grid-frame frame-tall-1">
+            <img src="images/project1.jpg" alt="Design Project 1" class="frame-img" />
+            <div class="frame-badge-box">
+              <div class="mini-logo">BP</div>
+              <div class="mini-logo">BP</div>
+            </div>
+          </div>
+
+          <!-- Frame 2 (Top Middle 1) -->
+          <div class="grid-frame frame-mid-1">
+            <img src="images/project2.jpg" alt="Design Project 2" class="frame-img" />
+          </div>
+
+          <!-- Frame 3 (Top Middle 2) -->
+          <div class="grid-frame frame-mid-2">
+            <img src="images/project3.jpg" alt="Design Project 3" class="frame-img" />
+          </div>
+
+          <!-- Frame 4 (Top Right Venom Card) -->
+          <div class="grid-frame frame-right-top">
+            <img src="images/project4.jpg" alt="Venom Design" class="frame-img" />
+            <div class="frame-text-overlay">
+              <span class="typography-title">VENOM</span>
+            </div>
+          </div>
+
+          <!-- Frame 5 (Bottom Left Poster) -->
+          <div class="grid-frame frame-bot-1">
+            <img src="images/project5.jpg" alt="Design Project 5" class="frame-img" />
+          </div>
+
+          <!-- Frame 6 (Bottom Center Featured portrait) -->
+          <div class="grid-frame frame-bot-2">
+            <img src="images/project6.jpg" alt="Featured Poster" class="frame-img" />
+            <div class="frame-title-bar">STORY 'C</div>
+          </div>
+
+          <!-- Frame 7 (Bottom Right Cyber Red Banner) -->
+          <div class="grid-frame frame-bot-3">
+            <img src="images/project7.jpg" alt="Valir Poster" class="frame-img" />
+            <div class="frame-title-banner">VALIR</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SLIDE 4: CONTACT PERSON & THANK YOU (#contact)
+         =================================================================== -->
+    <section class="page-section" id="contact">
+      <div class="slide-content contact-slide-layout">
+        
+        <!-- Left Column: Circle Avatar & Social Links -->
+        <div class="contact-left-side">
+          <h3 class="contact-header-text">CONTACT ME</h3>
+          
+          <div class="contact-circle-wrapper">
+            <img src="images/avatar.jpg" alt="Biplove Pokhrel Contact Avatar" class="contact-circle-img" />
+          </div>
+
+          <div class="contact-username-title">BIPLOVE POKHREL</div>
+
+          <div class="social-accounts-list">
+            <a href="https://instagram.com" target="_blank" class="social-pill">
+              <i class="fa-brands fa-instagram"></i>
+              <span>@biplove.pokhrel</span>
+            </a>
+
+            <a href="https://github.com" target="_blank" class="social-pill">
+              <i class="fa-brands fa-github"></i>
+              <span>@biplovepokhrel</span>
+            </a>
+
+            <a href="https://youtube.com" target="_blank" class="social-pill">
+              <i class="fa-brands fa-youtube"></i>
+              <span>BIPLOVE DEV</span>
+            </a>
+
+            <a href="mailto:biplove.pokhrel@example.com" class="social-pill">
+              <i class="fa-solid fa-envelope"></i>
+              <span>biplove.pokhrel@example.com</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Thank You 2026 & Footer Reel Aesthetic -->
+        <div class="contact-right-side">
+          <div class="thank-you-headline-box">
+            <h2 class="thank-you-title">THANK YOU</h2>
+            <div class="thank-you-year-large">2026</div>
+          </div>
+
+          <!-- Bottom Showcase Timeline Strips -->
+          <div class="archive-cards-row">
+            <div class="archive-year-card">
+              <img src="images/project8.jpg" alt="Portfolio 2023" class="arch-img" />
+              <span class="arch-label">2023</span>
+            </div>
+            <div class="archive-year-card">
+              <img src="images/project2.jpg" alt="Portfolio 2024" class="arch-img" />
+              <span class="arch-label">2024</span>
+            </div>
+            <div class="archive-year-card active">
+              <img src="images/project1.jpg" alt="Portfolio 2026" class="arch-img" />
+              <span class="arch-label">2026</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- OPTIONS MODAL -->
+  <div class="modal-overlay" id="optionsModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-sliders"></i> PORTFOLIO OPTIONS</h3>
+        <button class="close-btn" onclick="closeModal('optionsModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="option-row">
+          <label>Background Ambient Music</label>
+          <button class="option-toggle-btn" id="optMusicBtn" onclick="toggleAudio()">TOGGLE MUSIC</button>
+        </div>
+        <div class="option-row">
+          <label>Master Sound FX Volume</label>
+          <input type="range" min="0" max="1" step="0.1" value="0.7" onchange="setVolume(this.value)" />
+        </div>
+        <div class="option-row">
+          <label>Primary Theme Color</label>
+          <span class="theme-badge"><i class="fa-solid fa-circle" style="color: #00f0ff;"></i> Cyber Electric Blue</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-save-btn" onclick="closeModal('optionsModal')">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>
