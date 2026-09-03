@@ -4,9 +4,9 @@
 
 /* --- CSS Variables & Design System --- */
 :root {
-  --bg-dark: #070c1b;
-  --bg-card: rgba(10, 18, 40, 0.75);
-  --border-blue: rgba(0, 150, 255, 0.25);
+  --bg-dark: #040916;
+  --bg-card: rgba(6, 14, 34, 0.75);
+  --border-blue: rgba(0, 150, 255, 0.18);
   --border-glow: rgba(0, 240, 255, 0.6);
   
   --primary-blue: #00f0ff;
@@ -53,7 +53,7 @@ html, body {
   border-radius: 3px;
 }
 
-/* --- Background FX --- */
+/* --- Background FX (Matching Reference Image - No Grid Lines) --- */
 .cyber-bg {
   position: fixed;
   top: 0;
@@ -63,42 +63,34 @@ html, body {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 30%, #0c1636 0%, #070c1b 75%);
+  background: radial-gradient(ellipse at 75% 25%, #0b224d 0%, #050b19 55%, #02050e 100%);
 }
 
 .grid-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(rgba(0, 136, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 136, 255, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
+  display: none; /* Grid lines removed as requested */
 }
 
 .glow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(140px);
-  opacity: 0.3;
+  filter: blur(150px);
+  opacity: 0.25;
 }
 
 .orb-1 {
-  width: 600px;
-  height: 600px;
-  background: var(--primary-blue);
-  top: -150px;
-  right: -150px;
+  width: 700px;
+  height: 700px;
+  background: #0077ff;
+  top: -200px;
+  right: -200px;
 }
 
 .orb-2 {
-  width: 500px;
-  height: 500px;
-  background: var(--deep-blue);
-  bottom: -150px;
-  left: -100px;
+  width: 600px;
+  height: 600px;
+  background: #0033aa;
+  bottom: -200px;
+  left: -150px;
 }
 
 /* --- Top Navigation Bar --- */
@@ -119,10 +111,25 @@ html, body {
   transition: var(--transition);
 }
 
-.top-navbar.hidden {
-  transform: translateY(-100%);
+.top-navbar.home-mode {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none;
+}
+
+.top-navbar.home-mode .nav-brand,
+.top-navbar.home-mode .nav-pills {
   opacity: 0;
   pointer-events: none;
+  transform: translateY(-10px);
+}
+
+.top-navbar .nav-brand,
+.top-navbar .nav-pills {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: var(--transition);
 }
 
 .logo-box {
@@ -175,17 +182,115 @@ html, body {
   box-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
 }
 
-/* Audio Toggle Widget */
-.audio-toggle-btn {
+/* Audio Player Card Widget */
+.audio-player-card {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: rgba(10, 20, 45, 0.8);
-  border: 1px solid var(--border-blue);
+  gap: 12px;
+  background: rgba(8, 16, 38, 0.9);
+  border: 1px solid var(--border-glow);
   padding: 6px 14px;
-  border-radius: 20px;
-  cursor: pointer;
+  border-radius: 22px;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.2);
+  backdrop-filter: blur(12px);
   transition: var(--transition);
+}
+
+.audio-player-card:hover {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 22px rgba(0, 240, 255, 0.4);
+}
+
+.audio-disc-icon {
+  font-size: 1.25rem;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.audio-disc-icon.spinning {
+  animation: spinDisc 3s linear infinite;
+}
+
+@keyframes spinDisc {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.audio-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.25;
+}
+
+.audio-track-path {
+  font-family: var(--font-sub);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  letter-spacing: 0.5px;
+}
+
+.audio-label {
+  font-family: var(--font-sub);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.audio-play-toggle-btn {
+  background: linear-gradient(135deg, var(--sapphire-blue), var(--primary-blue));
+  border: none;
+  color: #070c1b;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: var(--transition);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+}
+
+.audio-play-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.7);
+}
+
+.volume-slider-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: 8px;
+  border-left: 1px solid rgba(0, 150, 255, 0.25);
+}
+
+.vol-icon {
+  font-size: 0.8rem;
+  color: var(--primary-blue);
+}
+
+.volume-slider {
+  width: 55px;
+  height: 4px;
+  accent-color: var(--primary-blue);
+  cursor: pointer;
+}
+
+.music-file-badge {
+  font-family: var(--font-sub);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid var(--border-glow);
+  padding: 4px 10px;
+  border-radius: 8px;
 }
 
 .equalizer-icon {
@@ -210,14 +315,6 @@ html, body {
 @keyframes eqBar {
   0% { height: 3px; }
   100% { height: 14px; }
-}
-
-.audio-label {
-  font-family: var(--font-sub);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--primary-blue);
 }
 
 /* --- CONTINUOUS SCROLL CONTAINER (4 FULL-SCREEN SLIDES) --- */

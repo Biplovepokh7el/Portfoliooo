@@ -3,75 +3,54 @@
    ========================================================================== */
 
 // --- Global Audio Engine Variables ---
-let audioCtx = null;
-let masterGain = null;
+let bgAudio = null;
 let isPlaying = false;
-let ambientOscillators = [];
 let audioVolume = 0.5;
+let sfxCtx = null;
 
-// --- Initialize Web Audio API Synth ---
+// --- Initialize Audio Element & Web Audio API for SFX ---
 function initAudio() {
-  if (audioCtx) return;
-  const AudioContext = window.AudioContext || window.webkitAudioContext;
-  audioCtx = new AudioContext();
-  masterGain = audioCtx.createGain();
-  masterGain.gain.setValueAtTime(audioVolume, audioCtx.currentTime);
-  masterGain.connect(audioCtx.destination);
+  if (!bgAudio) {
+    bgAudio = document.getElementById('bgAudio');
+    if (!bgAudio) {
+      bgAudio = new Audio('images/hahaha.mp3');
+      bgAudio.loop = true;
+      bgAudio.id = 'bgAudio';
+    }
+    bgAudio.volume = audioVolume;
+  }
+
+  if (!sfxCtx) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) {
+      sfxCtx = new AudioContext();
+    }
+  }
+  if (sfxCtx && sfxCtx.state === 'suspended') {
+    sfxCtx.resume().catch(() => {});
+  }
 }
 
-// --- Dynamic Ambient Synth Generator ---
+// --- Dynamic Music Player Engine (Plays images/hahaha.mp3) ---
 function startMusicEngine() {
   initAudio();
-  if (audioCtx.state === 'suspended') {
-    audioCtx.resume();
-  }
-  
-  if (isPlaying) return;
+  if (!bgAudio) return;
 
-  // Cyber Chord Frequencies (Hz): C minor 9th Ambient Chord (C3, Eb3, G3, Bb3, D4)
-  const chordFreqs = [130.81, 155.56, 196.00, 233.08, 293.66];
-
-  chordFreqs.forEach((freq, idx) => {
-    const osc = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-    const filter = audioCtx.createBiquadFilter();
-
-    osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
-    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-    // Subtle LFO modulation for warm analog pulse
-    const lfo = audioCtx.createOscillator();
-    const lfoGain = audioCtx.createGain();
-    lfo.frequency.value = 0.2 + idx * 0.1;
-    lfoGain.gain.value = 4;
-    lfo.connect(osc.frequency);
-    lfo.start();
-
-    filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(450 + idx * 120, audioCtx.currentTime);
-
-    gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime);
-
-    osc.connect(filter);
-    filter.connect(gainNode);
-    gainNode.connect(masterGain);
-
-    osc.start();
-    ambientOscillators.push({ osc, lfo, gainNode });
+  bgAudio.volume = audioVolume;
+  bgAudio.play().then(() => {
+    isPlaying = true;
+    updateAudioUI();
+  }).catch(err => {
+    console.log("Audio playback waiting for user interaction:", err);
+    isPlaying = false;
+    updateAudioUI();
   });
-
-  isPlaying = true;
-  updateAudioUI();
 }
 
 function stopMusicEngine() {
-  ambientOscillators.forEach(({ osc, lfo }) => {
-    try {
-      osc.stop();
-      lfo.stop();
-    } catch (e) {}
-  });
-  ambientOscillators = [];
+  if (bgAudio) {
+    bgAudio.pause();
+  }
   isPlaying = false;
   updateAudioUI();
 }
@@ -79,6 +58,7 @@ function stopMusicEngine() {
 // --- Toggle Audio ---
 function toggleAudio() {
   playClickSound();
+  initAudio();
   if (isPlaying) {
     stopMusicEngine();
   } else {
@@ -88,9 +68,16 @@ function toggleAudio() {
 
 function setVolume(val) {
   audioVolume = parseFloat(val);
-  if (masterGain && audioCtx) {
-    masterGain.gain.setValueAtTime(audioVolume, audioCtx.currentTime);
+  initAudio();
+  if (bgAudio) {
+    bgAudio.volume = audioVolume;
   }
+  
+  // Keep volume inputs in sync
+  const volumeSlider = document.getElementById('volumeSlider');
+  const modalVolumeSlider = document.getElementById('modalVolumeSlider');
+  if (volumeSlider) volumeSlider.value = audioVolume;
+  if (modalVolumeSlider) modalVolumeSlider.value = audioVolume;
 }
 
 // --- Update Audio Player UI ---
@@ -98,15 +85,27 @@ function updateAudioUI() {
   const equalizer = document.getElementById('equalizer');
   const audioLabel = document.getElementById('audioLabel');
   const optMusicBtn = document.getElementById('optMusicBtn');
+  const playIcon = document.getElementById('playIcon');
+  const musicIcon = document.getElementById('musicIcon');
 
   if (isPlaying) {
     if (equalizer) equalizer.classList.add('playing');
-    if (audioLabel) audioLabel.textContent = 'MUSIC ON';
+    if (audioLabel) {
+      audioLabel.textContent = 'NOW PLAYING';
+      audioLabel.style.color = '#00f0ff';
+    }
     if (optMusicBtn) optMusicBtn.textContent = 'MUTE MUSIC';
+    if (playIcon) playIcon.className = 'fa-solid fa-pause';
+    if (musicIcon) musicIcon.classList.add('spinning');
   } else {
     if (equalizer) equalizer.classList.remove('playing');
-    if (audioLabel) audioLabel.textContent = 'MUSIC OFF';
+    if (audioLabel) {
+      audioLabel.textContent = 'MUSIC OFF';
+      audioLabel.style.color = 'var(--text-muted)';
+    }
     if (optMusicBtn) optMusicBtn.textContent = 'START MUSIC';
+    if (playIcon) playIcon.className = 'fa-solid fa-play';
+    if (musicIcon) musicIcon.classList.remove('spinning');
   }
 }
 
@@ -114,23 +113,22 @@ function updateAudioUI() {
 function playClickSound() {
   try {
     initAudio();
-    if (audioCtx.state === 'suspended') audioCtx.resume();
-    
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
+    if (!sfxCtx) return;
+    const osc = sfxCtx.createOscillator();
+    const gain = sfxCtx.createGain();
 
     osc.type = 'sine';
-    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.08);
+    osc.frequency.setValueAtTime(800, sfxCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(300, sfxCtx.currentTime + 0.08);
 
-    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.12 * audioVolume, sfxCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, sfxCtx.currentTime + 0.08);
 
     osc.connect(gain);
-    gain.connect(audioCtx.destination);
+    gain.connect(sfxCtx.destination);
 
     osc.start();
-    osc.stop(audioCtx.currentTime + 0.08);
+    osc.stop(sfxCtx.currentTime + 0.08);
   } catch (e) {}
 }
 
@@ -145,6 +143,9 @@ function scrollToSection(sectionId) {
 
 // --- Scroll Observer for Active Navbar Pills & Visibility ---
 document.addEventListener('DOMContentLoaded', () => {
+  initAudio();
+  updateAudioUI();
+
   const sections = document.querySelectorAll('.page-section');
   const navbar = document.getElementById('navbar');
   const pills = {
@@ -163,11 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (entry.isIntersecting) {
         const id = entry.target.id;
 
-        // Navbar Visibility: Hide on home slide, show on slides 2, 3, 4
+        // Navbar Mode: home-mode keeps top-right music player visible while hiding pills/logo on home slide
         if (id === 'home') {
-          if (navbar) navbar.classList.add('hidden');
+          if (navbar) navbar.classList.add('home-mode');
         } else {
-          if (navbar) navbar.classList.remove('hidden');
+          if (navbar) navbar.classList.remove('home-mode');
         }
 
         // Active Pill Highlight

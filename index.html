@@ -19,6 +19,9 @@
 </head>
 <body>
 
+  <!-- Audio Element (hahaha.mp3) -->
+  <audio id="bgAudio" src="images/hahaha.mp3" loop preload="auto"></audio>
+
   <!-- Dynamic Cyber Background -->
   <div class="cyber-bg">
     <div class="grid-overlay"></div>
@@ -34,25 +37,40 @@
 
     <nav class="nav-pills">
       <button class="nav-pill" id="pill-about" onclick="scrollToSection('about')">
-        PROFIL
+        PROFILE
       </button>
       <button class="nav-pill" id="pill-projects" onclick="scrollToSection('projects')">
         PROJECT
       </button>
       <button class="nav-pill" id="pill-contact" onclick="scrollToSection('contact')">
-        CONTACT PERSON
+        CONTACT ME
       </button>
     </nav>
 
     <div class="nav-controls">
-      <div class="audio-toggle-btn" id="audioToggle" onclick="toggleAudio()" title="Toggle Audio">
+      <div class="audio-player-card" id="audioPlayerCard">
+        <div class="audio-disc-icon" id="musicIcon">
+          <i class="fa-solid fa-compact-disc"></i>
+        </div>
+        <div class="audio-details">
+          <span class="audio-track-path" title="Audio Location: images/hahaha.mp3">
+            <i class="fa-solid fa-music"></i> images/hahaha.mp3
+          </span>
+          <span class="audio-label" id="audioLabel">MUSIC OFF</span>
+        </div>
         <div class="equalizer-icon" id="equalizer">
           <span class="bar bar-1"></span>
           <span class="bar bar-2"></span>
           <span class="bar bar-3"></span>
           <span class="bar bar-4"></span>
         </div>
-        <span class="audio-label" id="audioLabel">MUSIC OFF</span>
+        <button class="audio-play-toggle-btn" id="audioToggle" onclick="toggleAudio()" title="Play / Pause images/hahaha.mp3">
+          <i class="fa-solid fa-play" id="playIcon"></i>
+        </button>
+        <div class="volume-slider-box">
+          <i class="fa-solid fa-volume-high vol-icon"></i>
+          <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.05" value="0.5" oninput="setVolume(this.value)" title="Volume Control" />
+        </div>
       </div>
     </div>
   </header>
@@ -125,7 +143,7 @@
           <div class="card-box about-box">
             <h3 class="box-title">ABOUT ME</h3>
             <p class="about-desc">
-              HI, I'M BIPLOVE POKHREL. I'M A PASSIONATE <strong>COMPUTER ENGINEERING STUDENT</strong> AND <strong>WEB DEVELOPER</strong>. 
+              HI, I'M BIPLOVE POKHREL. I'M A PASSIONATE <strong>COMPUTER ENGINEERING STUDENT</strong> AND <strong>GRAPHIC DESIGNER</strong>. 
               I HAVE A STRONG FOUNDATION IN GRAPHIC DESIGN, VIDEO EDITING, TYPOGRAPHY, FULL-STACK WEB APPLICATION DEVELOPMENT, AND SOFTWARE ENGINEERING. 
               I AM AUTODIDACTIC AND CONSTANTLY EVOLVING MY TECHNICAL AND DESIGN SKILLS YEAR AFTER YEAR.
             </p>
@@ -159,24 +177,34 @@
             <div class="info-column">
               <h4 class="column-title">EDUCATION</h4>
               <div class="info-detail">
-                <span class="info-year">● 2019 - 2022</span>
-                <p class="info-main">SMAN 2 / High School</p>
-                <span class="info-sub">Natural Science</span>
+                <span class="info-year">● 2011 - 2022</span>
+                <p class="info-main">Small Heaven School / SEE</p>
+                <span class="info-sub">Computer & Optional Mathematics</span>
+              </div>
+              <div class="info-detail">
+                <span class="info-year">● 2022 - 2025</span>
+                <p class="info-main">Valmiki Shikhsha Sadan +2 / High School</p>
+                <span class="info-sub">Computer Sciene</span>
               </div>
               <div class="info-detail" style="margin-top: 10px;">
-                <span class="info-year">● 2022 - PRESENT</span>
+                <span class="info-year">● 2025 - PRESENT</span>
                 <p class="info-main">Bachelor in Computer Engineering</p>
-                <span class="info-sub">Software & Embedded Systems</span>
+                <span class="info-sub"> Currently Ongoing</span>
               </div>
             </div>
 
             <div class="info-column">
               <h4 class="column-title">EXPERIENCE</h4>
               <div class="info-detail">
-                <span class="info-main">CONTENT & WEB DEVELOPMENT</span>
-                <p class="info-sub">Got Followers 20,000+ (13 JULI - 29 DES)</p>
-                <span class="info-sub">Full Stack Web Apps & Graphic Design</span>
+                <span class="info-main">Graphic Designer</span>
+                <p class="info-sub">Worked as a Graphic Designer at <strong>[Chitwan Sajha Hospital]</strong></p>
+                <!-- <span class="info-sub">Graphic Design</span> -->
               </div>
+                            <div class="info-detail">
+                <span class="info-main">Web Developer</span>
+                <span class="info-sub">Full Stack Website </span>
+              </div>
+
             </div>
           </div>
 
@@ -285,24 +313,21 @@
           <div class="contact-username-title">BIPLOVE POKHREL</div>
 
           <div class="social-accounts-list">
-            <a href="https://instagram.com" target="_blank" class="social-pill">
+            <a href="https://www.instagram.com/_biplovepokh7el/" target="_blank" class="social-pill">
               <i class="fa-brands fa-instagram"></i>
-              <span>@biplove.pokhrel</span>
+              <span>@_biplovepokh7el</span>
             </a>
 
-            <a href="https://github.com" target="_blank" class="social-pill">
+            <a href="https://github.com/Biplovepokh7el" target="_blank" class="social-pill">
               <i class="fa-brands fa-github"></i>
-              <span>@biplovepokhrel</span>
+              <span>@Biplovepokh7el</span>
             </a>
 
-            <a href="https://youtube.com" target="_blank" class="social-pill">
-              <i class="fa-brands fa-youtube"></i>
-              <span>BIPLOVE DEV</span>
-            </a>
+          
 
-            <a href="mailto:biplove.pokhrel@example.com" class="social-pill">
+            <a href="mailto:officialbiplove7@gmail.com" class="social-pill">
               <i class="fa-solid fa-envelope"></i>
-              <span>biplove.pokhrel@example.com</span>
+              <span>officialbiplove7@gmail.com</span>
             </a>
           </div>
         </div>
@@ -345,12 +370,18 @@
       </div>
       <div class="modal-body">
         <div class="option-row">
-          <label>Background Ambient Music</label>
-          <button class="option-toggle-btn" id="optMusicBtn" onclick="toggleAudio()">TOGGLE MUSIC</button>
+          <label><i class="fa-solid fa-compact-disc"></i> Music File Location</label>
+          <span class="music-file-badge" title="Location: images/hahaha.mp3">
+            <i class="fa-solid fa-file-audio"></i> images/hahaha.mp3
+          </span>
         </div>
         <div class="option-row">
-          <label>Master Sound FX Volume</label>
-          <input type="range" min="0" max="1" step="0.1" value="0.7" onchange="setVolume(this.value)" />
+          <label>Background Music</label>
+          <button class="option-toggle-btn" id="optMusicBtn" onclick="toggleAudio()">START MUSIC</button>
+        </div>
+        <div class="option-row">
+          <label>Master Sound Volume</label>
+          <input type="range" id="modalVolumeSlider" min="0" max="1" step="0.05" value="0.5" oninput="setVolume(this.value)" />
         </div>
         <div class="option-row">
           <label>Primary Theme Color</label>
