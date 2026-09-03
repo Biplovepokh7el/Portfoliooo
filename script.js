@@ -32,7 +32,8 @@ function initAudio() {
 }
 
 // --- Dynamic Music Player Engine (Plays images/hahaha.mp3) ---
-function startMusicEngine() {
+function playMusic() {
+  playClickSound();
   initAudio();
   if (!bgAudio) return;
 
@@ -47,7 +48,8 @@ function startMusicEngine() {
   });
 }
 
-function stopMusicEngine() {
+function pauseMusic() {
+  playClickSound();
   if (bgAudio) {
     bgAudio.pause();
   }
@@ -55,14 +57,32 @@ function stopMusicEngine() {
   updateAudioUI();
 }
 
-// --- Toggle Audio ---
-function toggleAudio() {
+function nextTrack() {
   playClickSound();
   initAudio();
+  if (bgAudio) {
+    bgAudio.currentTime = 0;
+    bgAudio.play().then(() => {
+      isPlaying = true;
+      updateAudioUI();
+    }).catch(() => {});
+  }
+}
+
+function startMusicEngine() {
+  playMusic();
+}
+
+function stopMusicEngine() {
+  pauseMusic();
+}
+
+// --- Toggle Audio ---
+function toggleAudio() {
   if (isPlaying) {
-    stopMusicEngine();
+    pauseMusic();
   } else {
-    startMusicEngine();
+    playMusic();
   }
 }
 
@@ -80,32 +100,20 @@ function setVolume(val) {
   if (modalVolumeSlider) modalVolumeSlider.value = audioVolume;
 }
 
-// --- Update Audio Player UI ---
+// --- Update Audio Player UI (Symbol Buttons) ---
 function updateAudioUI() {
-  const equalizer = document.getElementById('equalizer');
-  const audioLabel = document.getElementById('audioLabel');
+  const playBtns = document.querySelectorAll('#playBtn');
+  const pauseBtns = document.querySelectorAll('#pauseBtn');
   const optMusicBtn = document.getElementById('optMusicBtn');
-  const playIcon = document.getElementById('playIcon');
-  const musicIcon = document.getElementById('musicIcon');
 
   if (isPlaying) {
-    if (equalizer) equalizer.classList.add('playing');
-    if (audioLabel) {
-      audioLabel.textContent = 'NOW PLAYING';
-      audioLabel.style.color = '#00f0ff';
-    }
-    if (optMusicBtn) optMusicBtn.textContent = 'MUTE MUSIC';
-    if (playIcon) playIcon.className = 'fa-solid fa-pause';
-    if (musicIcon) musicIcon.classList.add('spinning');
+    playBtns.forEach(btn => btn.classList.add('active'));
+    pauseBtns.forEach(btn => btn.classList.remove('active'));
+    if (optMusicBtn) optMusicBtn.textContent = 'MUTE';
   } else {
-    if (equalizer) equalizer.classList.remove('playing');
-    if (audioLabel) {
-      audioLabel.textContent = 'MUSIC OFF';
-      audioLabel.style.color = 'var(--text-muted)';
-    }
-    if (optMusicBtn) optMusicBtn.textContent = 'START MUSIC';
-    if (playIcon) playIcon.className = 'fa-solid fa-play';
-    if (musicIcon) musicIcon.classList.remove('spinning');
+    playBtns.forEach(btn => btn.classList.remove('active'));
+    pauseBtns.forEach(btn => btn.classList.add('active'));
+    if (optMusicBtn) optMusicBtn.textContent = 'PLAY';
   }
 }
 

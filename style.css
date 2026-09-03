@@ -182,71 +182,31 @@ html, body {
   box-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
 }
 
-/* Audio Player Card Widget */
-.audio-player-card {
+/* Compact 3-Symbol Music Widget (Play, Pause, Next) */
+.compact-audio-controls {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: rgba(8, 16, 38, 0.9);
+  gap: 4px;
+  background: rgba(8, 16, 38, 0.85);
   border: 1px solid var(--border-glow);
-  padding: 6px 14px;
-  border-radius: 22px;
-  box-shadow: 0 0 16px rgba(0, 240, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 20px;
   backdrop-filter: blur(12px);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
   transition: var(--transition);
 }
 
-.audio-player-card:hover {
+.compact-audio-controls:hover {
   border-color: var(--primary-blue);
-  box-shadow: 0 0 22px rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
 }
 
-.audio-disc-icon {
-  font-size: 1.25rem;
-  color: var(--primary-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.audio-disc-icon.spinning {
-  animation: spinDisc 3s linear infinite;
-}
-
-@keyframes spinDisc {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.audio-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  line-height: 1.25;
-}
-
-.audio-track-path {
-  font-family: var(--font-sub);
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--primary-blue);
-  letter-spacing: 0.5px;
-}
-
-.audio-label {
-  font-family: var(--font-sub);
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-}
-
-.audio-play-toggle-btn {
-  background: linear-gradient(135deg, var(--sapphire-blue), var(--primary-blue));
+.audio-symbol-btn {
+  background: transparent;
   border: none;
-  color: #070c1b;
-  width: 32px;
-  height: 32px;
+  color: var(--text-muted);
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -254,32 +214,18 @@ html, body {
   cursor: pointer;
   font-size: 0.85rem;
   transition: var(--transition);
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
 }
 
-.audio-play-toggle-btn:hover {
+.audio-symbol-btn:hover {
+  color: #fff;
+  background: rgba(0, 240, 255, 0.15);
   transform: scale(1.1);
-  box-shadow: 0 0 18px rgba(0, 240, 255, 0.7);
 }
 
-.volume-slider-box {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding-left: 8px;
-  border-left: 1px solid rgba(0, 150, 255, 0.25);
-}
-
-.vol-icon {
-  font-size: 0.8rem;
-  color: var(--primary-blue);
-}
-
-.volume-slider {
-  width: 55px;
-  height: 4px;
-  accent-color: var(--primary-blue);
-  cursor: pointer;
+.audio-symbol-btn.active {
+  background: var(--primary-blue);
+  color: #070c1b;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
 }
 
 .music-file-badge {
