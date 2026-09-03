@@ -1087,18 +1087,285 @@ html, body {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (MEDIA QUERIES)
+   COMPREHENSIVE RESPONSIVE DESIGN SYSTEM (ALL DEVICES & MOBILE PHONES)
    ========================================================================== */
+
+/* --- Laptops & Tablets (Max-width: 1024px) --- */
 @media (max-width: 1024px) {
-  .profile-slide-layout, .contact-slide-layout {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  .page-section {
+    padding: 85px 24px 30px;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
+
+  .slide-content {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .home-slide-layout {
+    gap: 40px;
+  }
+
+  .main-title {
+    font-size: 3.2rem;
+  }
+
+  .profile-slide-layout,
+  .contact-slide-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .profile-left {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .spotlight-avatar-box {
+    max-width: 360px;
+    height: 380px;
+  }
+
   .reference-project-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
+    gap: 14px;
   }
-  .frame-tall-1, .frame-right-top {
+
+  .frame-tall-1,
+  .frame-right-top {
     grid-row: span 1;
+    height: 220px;
+  }
+
+  .grid-frame {
+    height: 200px;
+  }
+
+  .thank-you-title {
+    font-size: 3.6rem;
+    letter-spacing: 4px;
+  }
+
+  .thank-you-year-large {
+    font-size: 3.4rem;
+  }
+
+  .contact-right-side {
+    max-height: none;
+    gap: 25px;
+  }
+}
+
+/* --- Mobile Tablets & Medium Phones (Max-width: 768px) --- */
+@media (max-width: 768px) {
+  .top-navbar {
+    padding: 0 16px;
+    height: 64px;
+  }
+
+  .top-navbar.home-mode {
+    padding: 0 16px;
+  }
+
+  .nav-pills {
+    padding: 3px;
+    gap: 4px;
+  }
+
+  .nav-pill {
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+  }
+
+  .audio-player-card {
+    padding: 5px 10px;
+    gap: 8px;
+  }
+
+  .audio-track-path {
+    font-size: 0.72rem;
+    max-width: 110px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .volume-slider-box {
+    display: none; /* Hidden on mobile navbar to save space, volume control accessible via Options Modal */
+  }
+
+  .home-slide-layout {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 40px;
+  }
+
+  .hero-avatar-wrapper {
+    width: 240px;
+    height: 280px;
+  }
+
+  .crimson-backdrop {
+    width: 130px;
+    height: 180px;
+    left: -15px;
+    top: -10px;
+  }
+
+  .hero-text-menu {
+    align-items: center;
+    text-align: center;
+  }
+
+  .main-title {
+    font-size: clamp(2rem, 7vw, 3rem);
+    letter-spacing: 2px;
+  }
+
+  .title-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    letter-spacing: 1.5px;
+  }
+
+  .game-menu {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  .two-column-info {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .lang-row {
+    grid-template-columns: 100px 1fr 45px;
+    gap: 10px;
+    font-size: 0.8rem;
+  }
+
+  .thank-you-headline-box {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .thank-you-title {
+    font-size: clamp(2.2rem, 9vw, 3.4rem);
+    letter-spacing: 3px;
+  }
+
+  .thank-you-year-large {
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    letter-spacing: 3px;
+  }
+
+  .archive-cards-row {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .archive-year-card {
+    width: 100px;
+    height: 75px;
+  }
+
+  .contact-left-side {
+    padding: 20px;
+  }
+}
+
+/* --- Mobile Small Phones (Max-width: 480px) --- */
+@media (max-width: 480px) {
+  .top-navbar {
+    padding: 0 10px;
+    height: 58px;
+  }
+
+  .logo-box {
+    width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+  }
+
+  .nav-pills {
+    gap: 2px;
+  }
+
+  .nav-pill {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+  }
+
+  .audio-player-card {
+    padding: 4px 8px;
+    gap: 6px;
+    border-radius: 16px;
+  }
+
+  .audio-track-path {
+    display: none; /* Hide long path text on extra small mobile screens */
+  }
+
+  .audio-label {
+    font-size: 0.65rem;
+  }
+
+  .audio-play-toggle-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+
+  .page-section {
+    padding: 68px 12px 20px;
+  }
+
+  .projects-main-title {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
+  .reference-project-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .grid-frame {
+    height: 190px;
+  }
+
+  .card-box {
+    padding: 15px 16px;
+  }
+
+  .skills-icons-row {
+    gap: 10px;
+  }
+
+  .software-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 0.95rem;
+  }
+
+  .option-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .modal-card {
+    padding: 18px 16px;
   }
 }
