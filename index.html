@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Biplove Pokhrel | Computer Engineering Portfolio 2026</title>
-  <meta name="description" content="Portfolio of Biplove Pokhrel - Computer Engineering Student and Web Developer." />
+  <title>Biplove Pokhrel | Computer Engineering & Graphic Design Portfolio</title>
+  <meta name="description" content="Portfolio of Biplove Pokhrel - Computer Engineering Student, Graphic Designer, and Web Developer." />
+  
+  <!-- Open Graph Meta Tags for Social Sharing -->
+  <meta property="og:title" content="Biplove Pokhrel | Computer Engineering & Graphic Design Portfolio" />
+  <meta property="og:description" content="Explore the creative design and software engineering portfolio of Biplove Pokhrel." />
+  <meta property="og:image" content="images/avatar.jpg" />
+  <meta property="og:type" content="website" />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +25,7 @@
 </head>
 <body>
 
-  <!-- Audio Element (hahaha.mp3) -->
+  <!-- Audio Element -->
   <audio id="bgAudio" src="images/hahaha.mp3" loop preload="auto"></audio>
 
   <!-- Dynamic Cyber Background -->
@@ -40,7 +46,7 @@
         PROFILE
       </button>
       <button class="nav-pill" id="pill-projects" onclick="scrollToSection('projects')">
-        PROJECT
+        PROJECTS
       </button>
       <button class="nav-pill" id="pill-contact" onclick="scrollToSection('contact')">
         CONTACT ME
@@ -48,25 +54,19 @@
     </nav>
 
     <div class="nav-controls">
-      <div class="compact-audio-controls" id="audioPlayerCard">
-        <button class="audio-symbol-btn" id="playBtn" onclick="playMusic()" title="Play">
-          <i class="fa-solid fa-play"></i>
-        </button>
-        <button class="audio-symbol-btn" id="pauseBtn" onclick="pauseMusic()" title="Pause">
-          <i class="fa-solid fa-pause"></i>
-        </button>
-        <button class="audio-symbol-btn" id="nextBtn" onclick="nextTrack()" title="Next">
-          <i class="fa-solid fa-forward-step"></i>
-        </button>
-      </div>
+      <!-- Simplified Mute Only Control -->
+      <button class="audio-mute-btn" id="muteToggleBtn" onclick="toggleMute()" title="Toggle Background Music">
+        <i class="fa-solid fa-volume-high" id="muteIcon"></i>
+        <span id="muteBtnText">MUTE</span>
+      </button>
     </div>
   </header>
 
-  <!-- Scroll Container (4 Full-Screen Snap Slides) -->
+  <!-- Scroll Container (Natural Fluid Page Layout) -->
   <main class="scroll-container" id="scrollContainer">
 
     <!-- ===================================================================
-         SLIDE 1: TITLE SCREEN / GAME MENU (#home)
+         SECTION 1: TITLE SCREEN / GAME MENU (#home)
          =================================================================== -->
     <section class="page-section" id="home">
       <div class="home-top-logo">
@@ -84,21 +84,18 @@
 
         <!-- Right Side: Title & Game Menu -->
         <div class="hero-text-menu">
-          <h1 class="main-title">PORTFOLIO <span class="year-glow">2026</span></h1>
+          <h1 class="main-title">PORTFOLIO</h1>
           
           <div class="title-subtitle">
-            <span class="badge-square">■</span> COMPUTER ENGINEERING STUDENT
+            <span class="badge-square">■</span> COMPUTER ENGINEERING STUDENT & GRAPHIC DESIGNER
           </div>
 
           <div class="game-menu">
-            <button class="menu-item-btn start-btn" onclick="scrollToSection('about'); startMusicEngine();">
+            <button class="menu-item-btn start-btn" onclick="scrollToSection('about')">
               START
             </button>
             <button class="menu-item-btn" onclick="openModal('optionsModal')">
               OPTIONS
-            </button>
-            <button class="menu-item-btn" onclick="scrollToSection('about')">
-              EXIT
             </button>
           </div>
         </div>
@@ -106,7 +103,7 @@
     </section>
 
     <!-- ===================================================================
-         SLIDE 2: PROFIL / ABOUT ME (#about)
+         SECTION 2: PROFILE / ABOUT ME (#about)
          =================================================================== -->
     <section class="page-section" id="about">
       <div class="slide-content profile-slide-layout">
@@ -134,9 +131,14 @@
               I HAVE A STRONG FOUNDATION IN GRAPHIC DESIGN, VIDEO EDITING, TYPOGRAPHY, FULL-STACK WEB APPLICATION DEVELOPMENT, AND SOFTWARE ENGINEERING. 
               I AM AUTODIDACTIC AND CONSTANTLY EVOLVING MY TECHNICAL AND DESIGN SKILLS YEAR AFTER YEAR.
             </p>
+            <div class="about-action-row" style="margin-top: 16px;">
+              <a href="images/avatar.jpg" download="Biplove_Pokhrel_Avatar.jpg" class="download-cv-btn">
+                <i class="fa-solid fa-file-arrow-down"></i> DOWNLOAD CV / RESUME
+              </a>
+            </div>
           </div>
 
-          <!-- Software Skills Grid (Exact icons matching reference image) -->
+          <!-- Software Skills Grid -->
           <div class="card-box skills-box">
             <h3 class="box-title">SOFTWARE SKILLS</h3>
             <div class="skills-icons-row">
@@ -171,12 +173,12 @@
               <div class="info-detail">
                 <span class="info-year">● 2022 - 2025</span>
                 <p class="info-main">Valmiki Shikhsha Sadan +2 / High School</p>
-                <span class="info-sub">Computer Sciene</span>
+                <span class="info-sub">Computer Science</span>
               </div>
               <div class="info-detail" style="margin-top: 10px;">
                 <span class="info-year">● 2025 - PRESENT</span>
                 <p class="info-main">Bachelor in Computer Engineering</p>
-                <span class="info-sub"> Currently Ongoing</span>
+                <span class="info-sub">Currently Ongoing</span>
               </div>
             </div>
 
@@ -185,13 +187,11 @@
               <div class="info-detail">
                 <span class="info-main">Graphic Designer</span>
                 <p class="info-sub">Worked as a Graphic Designer at <strong>[Chitwan Sajha Hospital]</strong></p>
-                <!-- <span class="info-sub">Graphic Design</span> -->
               </div>
-                            <div class="info-detail">
+              <div class="info-detail">
                 <span class="info-main">Web Developer</span>
-                <span class="info-sub">Full Stack Website </span>
+                <span class="info-sub">Full Stack Website & UI/UX Development</span>
               </div>
-
             </div>
           </div>
 
@@ -221,61 +221,89 @@
     </section>
 
     <!-- ===================================================================
-         SLIDE 3: RECAP PROJECT 2026 (#projects)
+         SECTION 3: FEATURED PROJECTS (#projects)
          =================================================================== -->
     <section class="page-section" id="projects">
       <div class="slide-content projects-slide-layout">
         
         <div class="projects-title-header">
-          <h2 class="projects-main-title">RECAP PROJECT <span class="year-glow">2026</span></h2>
-          <span class="no-ai-badge">NO AI</span>
+          <h2 class="projects-main-title">FEATURED <span class="year-glow">PROJECTS</span></h2>
+          <span class="no-ai-badge">CLICK ANY PROJECT TO PREVIEW</span>
         </div>
 
-        <!-- Multi-Frame Project Gallery Grid matching reference image layout -->
+        <!-- Multi-Frame Project Gallery Grid -->
         <div class="reference-project-grid">
           
           <!-- Frame 1 (Left Tall Showcase) -->
-          <div class="grid-frame frame-tall-1">
+          <div class="grid-frame frame-tall-1" onclick="openProjectModal('project1')" title="Click to view details">
             <img src="images/project1.jpg" alt="Design Project 1" class="frame-img" />
             <div class="frame-badge-box">
               <div class="mini-logo">BP</div>
-              <div class="mini-logo">BP</div>
+              <div class="mini-logo">DESIGN</div>
+            </div>
+            <div class="frame-hover-overlay">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>VIEW PROJECT</span>
             </div>
           </div>
 
           <!-- Frame 2 (Top Middle 1) -->
-          <div class="grid-frame frame-mid-1">
+          <div class="grid-frame frame-mid-1" onclick="openProjectModal('project2')" title="Click to view details">
             <img src="images/project2.jpg" alt="Design Project 2" class="frame-img" />
+            <div class="frame-hover-overlay">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>VIEW PROJECT</span>
+            </div>
           </div>
 
           <!-- Frame 3 (Top Middle 2) -->
-          <div class="grid-frame frame-mid-2">
+          <div class="grid-frame frame-mid-2" onclick="openProjectModal('project3')" title="Click to view details">
             <img src="images/project3.jpg" alt="Design Project 3" class="frame-img" />
+            <div class="frame-hover-overlay">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>VIEW PROJECT</span>
+            </div>
           </div>
 
           <!-- Frame 4 (Top Right Venom Card) -->
-          <div class="grid-frame frame-right-top">
+          <div class="grid-frame frame-right-top" onclick="openProjectModal('project4')" title="Click to view details">
             <img src="images/project4.jpg" alt="Venom Design" class="frame-img" />
             <div class="frame-text-overlay">
               <span class="typography-title">VENOM</span>
             </div>
+            <div class="frame-hover-overlay">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>VIEW PROJECT</span>
+            </div>
           </div>
 
           <!-- Frame 5 (Bottom Left Poster) -->
-          <div class="grid-frame frame-bot-1">
+          <div class="grid-frame frame-bot-1" onclick="openProjectModal('project5')" title="Click to view details">
             <img src="images/project5.jpg" alt="Design Project 5" class="frame-img" />
+            <div class="frame-hover-overlay">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>VIEW PROJECT</span>
+            </div>
           </div>
 
           <!-- Frame 6 (Bottom Center Featured portrait) -->
-          <div class="grid-frame frame-bot-2">
+          <div class="grid-frame frame-bot-2" onclick="openProjectModal('project6')" title="Click to view details">
             <img src="images/project6.jpg" alt="Featured Poster" class="frame-img" />
             <div class="frame-title-bar">STORY 'C</div>
+            <div class="frame-hover-overlay">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>VIEW PROJECT</span>
+            </div>
           </div>
 
           <!-- Frame 7 (Bottom Right Cyber Red Banner) -->
-          <div class="grid-frame frame-bot-3">
+          <div class="grid-frame frame-bot-3" onclick="openProjectModal('project7')" title="Click to view details">
             <img src="images/project7.jpg" alt="Valir Poster" class="frame-img" />
             <div class="frame-title-banner">VALIR</div>
+            <div class="frame-hover-overlay">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+              <span>VIEW PROJECT</span>
+            </div>
           </div>
 
         </div>
@@ -284,14 +312,14 @@
     </section>
 
     <!-- ===================================================================
-         SLIDE 4: CONTACT PERSON & THANK YOU (#contact)
+         SECTION 4: CONTACT PERSON (#contact)
          =================================================================== -->
     <section class="page-section" id="contact">
       <div class="slide-content contact-slide-layout">
         
         <!-- Left Column: Circle Avatar & Social Links -->
         <div class="contact-left-side">
-          <h3 class="contact-header-text">CONTACT ME</h3>
+          <h3 class="contact-header-text">GET IN TOUCH</h3>
           
           <div class="contact-circle-wrapper">
             <img src="images/avatar.jpg" alt="Biplove Pokhrel Contact Avatar" class="contact-circle-img" />
@@ -310,8 +338,6 @@
               <span>@Biplovepokh7el</span>
             </a>
 
-          
-
             <a href="mailto:officialbiplove7@gmail.com" class="social-pill">
               <i class="fa-solid fa-envelope"></i>
               <span>officialbiplove7@gmail.com</span>
@@ -319,27 +345,32 @@
           </div>
         </div>
 
-        <!-- Right Column: Thank You 2026 & Footer Reel Aesthetic -->
+        <!-- Right Column: Professional Summary & Contact Card -->
         <div class="contact-right-side">
-          <div class="thank-you-headline-box">
-            <h2 class="thank-you-title">THANK YOU</h2>
-            <div class="thank-you-year-large">2026</div>
-          </div>
+          <div class="contact-info-card">
+            <h2 class="contact-card-title">LET'S BUILD SOMETHING EXTRAORDINARY</h2>
+            <p class="contact-card-text">
+              WHETHER YOU NEED HIGH-IMPACT GRAPHIC DESIGN, BRAND IDENTITY, VIDEO EDITING, OR MODERN FULL-STACK WEB APPLICATIONS, I AM READY TO COLLABORATE AND BRING YOUR VISION TO LIFE.
+            </p>
+            
+            <div class="contact-quick-stats">
+              <div class="stat-box">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">YEARS CREATIVE EXP.</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">DEDICATION</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">AVAILABLE</span>
+              </div>
+            </div>
 
-          <!-- Bottom Showcase Timeline Strips -->
-          <div class="archive-cards-row">
-            <div class="archive-year-card">
-              <img src="images/project8.jpg" alt="Portfolio 2023" class="arch-img" />
-              <span class="arch-label">2023</span>
-            </div>
-            <div class="archive-year-card">
-              <img src="images/project2.jpg" alt="Portfolio 2024" class="arch-img" />
-              <span class="arch-label">2024</span>
-            </div>
-            <div class="archive-year-card active">
-              <img src="images/project1.jpg" alt="Portfolio 2026" class="arch-img" />
-              <span class="arch-label">2026</span>
-            </div>
+            <a href="mailto:officialbiplove7@gmail.com" class="contact-direct-btn">
+              <i class="fa-solid fa-paper-plane"></i> SEND A MESSAGE
+            </a>
           </div>
         </div>
 
@@ -357,14 +388,8 @@
       </div>
       <div class="modal-body">
         <div class="option-row">
-          <label><i class="fa-solid fa-compact-disc"></i> Music File Location</label>
-          <span class="music-file-badge" title="Location: images/hahaha.mp3">
-            <i class="fa-solid fa-file-audio"></i> images/hahaha.mp3
-          </span>
-        </div>
-        <div class="option-row">
           <label>Background Music</label>
-          <button class="option-toggle-btn" id="optMusicBtn" onclick="toggleAudio()">START MUSIC</button>
+          <button class="option-toggle-btn" id="optMusicBtn" onclick="toggleMute()">MUTE</button>
         </div>
         <div class="option-row">
           <label>Master Sound Volume</label>
@@ -381,7 +406,47 @@
     </div>
   </div>
 
+  <!-- PROJECT PREVIEW LIGHTBOX MODAL -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-card project-modal-card">
+      <div class="modal-header">
+        <h3 id="modalProjectTitle"><i class="fa-solid fa-eye"></i> PROJECT SHOWCASE</h3>
+        <button class="close-btn" onclick="closeModal('projectModal')">&times;</button>
+      </div>
+      <div class="modal-body project-modal-body">
+        <div class="project-modal-preview" onclick="openFullImageFromModal()" title="Click to view full uncompressed size">
+          <img id="modalProjectImg" src="" alt="Project Preview" />
+        </div>
+        <div class="project-modal-info">
+          <div class="project-tags-row" id="modalProjectTags"></div>
+          <p class="project-desc-text" id="modalProjectDesc"></p>
+          <div class="project-tools-used">
+            <span class="tools-label">SOFTWARE & TOOLS:</span>
+            <div class="tools-badges" id="modalProjectTools"></div>
+          </div>
+          <div class="modal-actions-row" style="margin-top: 12px;">
+            <a id="modalFullResBtn" href="#" target="_blank" class="full-res-view-btn" title="Open original image file in new tab">
+              <i class="fa-solid fa-expand"></i> OPEN ORIGINAL FULL SIZE
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-save-btn" onclick="closeModal('projectModal')">CLOSE PREVIEW</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL RESOLUTION UNCOMPRESSED IMAGE LIGHTBOX MODAL -->
+  <div class="modal-overlay full-image-overlay" id="fullImageModal">
+    <button class="close-btn full-image-close" onclick="closeModal('fullImageModal')">&times;</button>
+    <div class="full-image-container">
+      <img id="fullSizeImg" src="" alt="Full Size Uncompressed Project Artwork" />
+    </div>
+  </div>
+
   <!-- Custom Script -->
   <script src="script.js"></script>
 </body>
 </html>
+
